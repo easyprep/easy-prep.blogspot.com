@@ -4,7 +4,7 @@ body{
     padding: 0;
 }
 
-ul {
+.PageList ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -12,11 +12,11 @@ ul {
   background-color: #333;
 }
 
-li {
+.PageList li {
   float: left;
 }
 
-li a {
+.PageList li a {
   display: block;
   color: white;
   text-align: center;
@@ -24,20 +24,20 @@ li a {
   text-decoration: none;
 }
 
-li a:hover:not(.active) {
+.PageList li a:hover:not(.active) {
   background-color: #111;
 }
 
-.active {
+.PageList .active {
   background-color: #4CAF50;
 }
 
-.post{
+.Blog .post{
 border-top: 1px solid lightgray;
 margin-bottom: 1rem;
 padding: 1rem;
 }
 
-.post:first-child{
+.Blog .post:first-child{
 border-top:none;
 }
