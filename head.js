@@ -16,11 +16,6 @@ const $ = function (selector, doc = document) {
 // Events
 window.onload = function (e) {
     let cahce = cacheDocument(document, location);
-    if(noCachePaths.indexOf(location.pathname) == -1){
-        localStorage['cache:/' + location.pathname] = JSON.stringify(cache);
-    }else{
-        cache.path = location.href;
-    }
     window.history.pushState(cache, cache.title, cache.path);
 }
 
@@ -65,12 +60,6 @@ function loadFromServer(a) {
 
         let cache = cacheDocument(doc, a);
 
-        if(noCachePaths.indexOf(a.pathname) == -1){
-            localStorage['cache:/' + a.pathname] = JSON.stringify(cache);
-        }else{
-            cache.path = a.href;
-        }
-
         showContent(cache, true);
 
         console.log('From Server : ', a.pathname);
@@ -87,6 +76,12 @@ function cacheDocument(doc, a) {
     if (a.pathname == '/') expiry = 1;
 
     cache = { htm, title, expiry, ts: Date.now(), path: a.pathname };
+
+    if(noCachePaths.indexOf(a.pathname) == -1){
+        localStorage['cache:/' + a.pathname] = JSON.stringify(cache);
+    }else{
+        cache.path = a.href;
+    }
 
     return cache;
 }

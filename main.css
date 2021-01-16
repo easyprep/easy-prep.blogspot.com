@@ -38,6 +38,11 @@ body{
 
 
 /*--- PageList ---*/
+.PageList {
+    position: sticky;
+    top: 0px;
+}
+
 .PageList ul {
   list-style-type: none;
   margin: 0;
