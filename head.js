@@ -36,7 +36,7 @@ function GoUsingAjax(a) {
 
         console.log('From Cache : ', a.pathname);
 
-        if (cache.expiry < Date.now()) {
+        if ((Date.now() - cache.ts) > (cache.expiry * 60000)) {
             loadFromServer(a);
         }
 
@@ -68,13 +68,13 @@ function loadFromServer(a) {
 
 function cacheDocument(doc, a) {
 
-    let htm = $('#main',doc).innerHTML;
-    let title = $('title',doc)[0].text;
-    let expiry = Date.now() + (parseInt(localStorage.cacheExpiry) || 30) * 60000;
+    let htm = $('#main', doc).innerHTML;
+    let title = $('title', doc)[0].text;
+    let expiry = (parseInt(localStorage.cacheExpiry) || 30);
 
-    if(a.pathname == '/') expiry = Date.now() + 60 * 1000;
+    if (a.pathname == '/') expiry = 1;
 
-    cache = { htm, title, expiry, path: a.pathname };
+    cache = { htm, title, expiry, ts: Date.now(), path: a.pathname };
     localStorage['cache:/' + a.pathname] = JSON.stringify(cache);
 
     return cache;
