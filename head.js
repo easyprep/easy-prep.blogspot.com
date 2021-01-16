@@ -16,7 +16,7 @@ const $ = function (selector, doc = document) {
 // Events
 window.onload = function (e) {
     let cahce = cacheDocument(document, location);
-    if(noCachePaths.indexOf(a.pathname) == -1){
+    if(noCachePaths.indexOf(location.pathname) == -1){
         localStorage['cache:/' + location.pathname] = JSON.stringify(cache);
     }else{
         cache.path = location.href;
