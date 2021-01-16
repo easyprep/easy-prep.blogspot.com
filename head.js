@@ -1,6 +1,9 @@
 console.log('head.js');
+
 // Constants
-const noCachePaths = ["/search"];
+const shortTermCache = 1; //minute
+const longTermCache = 30; //minutes
+
 
 // Dom Selector
 const $ = function (selector, doc = document) {
@@ -71,16 +74,18 @@ function cacheDocument(doc, a) {
 
     let htm = $('#main', doc).innerHTML;
     let title = $('title', doc)[0].text;
-    let expiry = (parseInt(localStorage.cacheExpiry) || 30);
+    let expiry = (parseInt(localStorage.longTermCache) || longTermCache);
 
-    if (a.pathname == '/') expiry = 1;
+    if (a.pathname == '/' || a.pathname.indexOf('/search/') == 0) {
+        expiry = shortTermCache;
+    }
 
     cache = { htm, title, expiry, ts: Date.now(), path: a.pathname };
 
-    if(noCachePaths.indexOf(a.pathname) == -1){
+    if (a.search) {
+        cache.path = a.pathname + a.search + a.hash;
+    } else {
         localStorage['cache:/' + a.pathname] = JSON.stringify(cache);
-    }else{
-        cache.path = a.href;
     }
 
     return cache;
