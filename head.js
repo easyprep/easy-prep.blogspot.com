@@ -26,6 +26,7 @@ window.onpopstate = function (e) {
 function GoUsingAjax(a) {
 
     if (location.pathname == a.pathname) return;
+    if ('/search' == a.pathname) return;
 
     let cache = localStorage['cache:/' + a.pathname];
 
