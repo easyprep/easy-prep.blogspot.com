@@ -1,4 +1,6 @@
 console.log('head.js');
+// Constants
+const noCachePaths = ["/search"];
 
 // Dom Selector
 const $ = function (selector, doc = document) {
@@ -14,15 +16,17 @@ const $ = function (selector, doc = document) {
 // Events
 window.onload = function (e) {
     let cahce = cacheDocument(document, location);
+    if(noCachePaths.indexOf(a.pathname) == -1){
+        localStorage['cache:/' + location.pathname] = JSON.stringify(cache);
+    }else{
+        cache.path = location.href;
+    }
     window.history.pushState(cache, cache.title, location.pathname);
 }
 
 window.onpopstate = function (e) {
     showContent(e.state, false);
 }
-
-// Constants
-const noCachePaths = ["/search"];
 
 // Common Functions
 function GoUsingAjax(a) {
@@ -66,7 +70,7 @@ function loadFromServer(a) {
         }else{
             cache.path = a.href;
         }
-        
+
         showContent(cache, true);
 
         console.log('From Server : ', a.pathname);
