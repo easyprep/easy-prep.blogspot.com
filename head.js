@@ -72,7 +72,7 @@ function loadFromServer(a) {
 
 function cacheDocument(doc, a) {
 
-    let htm = $('#main', doc).innerHTML;
+    let htm = $('#app', doc).innerHTML;
     let title = $('title', doc)[0].text;
     let expiry = (parseInt(localStorage.longTermCache) || longTermCache);
 
@@ -93,7 +93,7 @@ function cacheDocument(doc, a) {
 
 function showContent(cache, pushHistory) {
 
-    $('#main').innerHTML = cache.htm;
+    $('#app').innerHTML = cache.htm;
     document.title = cache.title;
 
     if (pushHistory) {
