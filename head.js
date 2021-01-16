@@ -70,7 +70,9 @@ function cacheDocument(doc, a) {
 
     let htm = $('#main',doc).innerHTML;
     let title = $('title',doc)[0].text;
-    let expiry = Date.now() + (parseInt(localStorage.cacheExpiry) || 5) * 60000;
+    let expiry = Date.now() + (parseInt(localStorage.cacheExpiry) || 30) * 60000;
+
+    if(a.pathname == '/') expiry = Date.now() + 60 * 1000;
 
     cache = { htm, title, expiry, path: a.pathname };
     localStorage['cache:/' + a.pathname] = JSON.stringify(cache);
