@@ -21,15 +21,13 @@ window.onpopstate = function (e) {
     showContent(e.state, false);
 }
 
+// Constants
+const noCachePaths = ["/search"];
 
 // Common Functions
 function GoUsingAjax(a) {
 
     if (location.pathname == a.pathname) return;
-    if ('/search' == a.pathname) {
-        location.href = a.href;
-        return;
-    }
 
     let cache = localStorage['cache:/' + a.pathname];
 
@@ -63,6 +61,12 @@ function loadFromServer(a) {
 
         let cache = cacheDocument(doc, a);
 
+        if(noCachePaths.indexOf(a.pathname) == -1){
+            localStorage['cache:/' + a.pathname] = JSON.stringify(cache);
+        }else{
+            cache.path = a.href;
+        }
+        
         showContent(cache, true);
 
         console.log('From Server : ', a.pathname);
@@ -79,7 +83,6 @@ function cacheDocument(doc, a) {
     if (a.pathname == '/') expiry = 1;
 
     cache = { htm, title, expiry, ts: Date.now(), path: a.pathname };
-    localStorage['cache:/' + a.pathname] = JSON.stringify(cache);
 
     return cache;
 }
