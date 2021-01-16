@@ -21,7 +21,7 @@ window.onload = function (e) {
     }else{
         cache.path = location.href;
     }
-    window.history.pushState(cache, cache.title, location.pathname);
+    window.history.pushState(cache, cache.title, cache.path);
 }
 
 window.onpopstate = function (e) {
