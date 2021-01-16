@@ -4,6 +4,14 @@ body{
     padding: 0;
 }
 
+a,a:hover,a:visited{
+text-decoration:none;
+}
+
+form {
+    margin-bottom: 0;
+}
+
 /*--- Loader ---*/
 #loading{
     position: fixed;
@@ -35,6 +43,52 @@ body{
   100% { transform: rotate(360deg); }
 }
 /*--- Loader ---*/
+
+
+/*--- Layout ---*/
+.header { grid-area: header; }
+.main { grid-area: main; }
+.sidebar { 
+grid-area: right; 
+border-left: 1px solid lightgray;
+}
+.footer { 
+grid-area: footer; 
+border-top: 1px solid lightgray;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header'
+    'main main main right right'
+    'footer footer footer footer footer';
+}
+
+@media (max-width:600px){
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'main main main'
+ 'right right right'
+    'footer footer footer';
+}
+
+.sidebar {
+border-left: none;
+border-top: 1px solid lightgray;
+}
+
+}
+
+.sidebar > .widget,
+.footer > .widget
+ {
+padding: 1rem;
+}
+/*--- Layout ---*/
 
 
 /*--- PageList ---*/
@@ -84,3 +138,24 @@ padding: 1rem;
 border-top:none;
 }
 /*--- Blog ---*/
+
+
+/*--- Pager ---*/
+.blog-pager{
+display:flex;
+    padding: 1rem;
+justify-content: center!important;
+}
+
+.blog-pager>a{
+border: 1px solid lightgray;
+    padding: 0.5rem .75rem;
+}
+/*--- Pager ---*/
+
+
+/*--- Search ---*/
+#BlogSearch1 form {
+    display: flex;
+}
+/*--- Search ---*/
