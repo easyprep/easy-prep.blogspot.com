@@ -22,6 +22,10 @@ function GoUsingAjax(a) {
         showContent(cache, true);
 
         console.log('From Cache : ', a.pathname);
+
+        if (cache.expiry < Date.now()) {
+            loadFromServer(a);
+        }
     } else {
         loadFromServer(a);
     }
@@ -47,8 +51,9 @@ function cacheDocument(el, a) {
 
     let htm = el.querySelector('#main').innerHTML;
     let title = el.querySelectorAll('title')[0].text;
+    let expiry = Date.now() + (parseInt(localStorage.cacheExpiry) || 5) * 60000;
 
-    cache = { htm, title, ts: Date.now(), path: a.pathname };
+    cache = { htm, title, expiry, path: a.pathname };
     localStorage['cache:/' + a.pathname] = JSON.stringify(cache);
     return cache;
 }
