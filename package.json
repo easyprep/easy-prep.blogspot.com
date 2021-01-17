@@ -4,7 +4,7 @@
   "description": "",
   "main": "body.js",
   "scripts": {
-    "push": "git add . && git commit -m update && git push origin master"
+    "push": "git add . && git commit -m update && git push origin main"
   },
   "repository": {
     "type": "git",
