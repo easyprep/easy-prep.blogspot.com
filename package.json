@@ -1,0 +1,20 @@
+{
+  "name": "easy-prep.blogspot.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "body.js",
+  "scripts": {
+    "push": "git add . && git commit -m update && git push origin master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/easyprep/easy-prep.blogspot.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/easyprep/easy-prep.blogspot.com/issues"
+  },
+  "homepage": "https://github.com/easyprep/easy-prep.blogspot.com#readme"
+}
