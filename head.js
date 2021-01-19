@@ -76,7 +76,7 @@ function cacheDocument(doc, a) {
 
     cache = { htm, title, expiry, ts: Date.now(), path: a.pathname };
 
-    if (a.search) {
+    if (!!a.search && a.pathname == '/search') {
         cache.path = a.pathname + a.search + a.hash;
     } else {
         localStorage['cache:/' + a.pathname] = JSON.stringify(cache);
