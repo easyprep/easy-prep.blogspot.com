@@ -7,13 +7,7 @@ const longTermCache = 30; //minutes
 
 // Dom Selector
 const $ = function (selector, doc = document) {
-
-    if (selector.indexOf('#') == 0) {
-        return doc.querySelector(selector);
-    } else {
-        return doc.querySelectorAll(selector);
-    }
-
+    return selector.split(/[ >]/).pop().indexOf('#') == 0 ? doc.querySelector(selector) : doc.querySelectorAll(selector);
 }
 
 // Events
