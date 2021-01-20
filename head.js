@@ -14,7 +14,8 @@ const $ = function (selector, doc = document) {
 
 // Events
 window.onload = function (e) {
-    let cache = parseContent(document, location);
+    let cache = this.parseContent(document, location);
+    this.setCache(cache);
     window.history.pushState(cache, cache.title, cache.href);
 }
 
