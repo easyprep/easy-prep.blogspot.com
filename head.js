@@ -44,6 +44,12 @@ window.onpopstate = (e)=>{
 
 // Common Functions
 function GoUsingAjax(a) {
+    
+    if(a.nodeName == 'FORM'){
+        let url = a.action + '?' + new URLSearchParams(new FormData(a)).toString();
+        a = document.createElement('a');
+        a.href = url;
+    }
 
     if(window.qObj.m){
         let qObj = qs.parse(a.search);
@@ -107,7 +113,7 @@ function getCache(a) {
 function setCache(cache) {
     let s = cache.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
     try {
-        s[cache.href] = JSON.stringify(cache);
+        s[cache.href] = JSON.stringify({ts:Date.now(),...cache});
     } catch (e) {
         console.log(e);
     }
