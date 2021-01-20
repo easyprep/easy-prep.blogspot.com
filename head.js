@@ -45,7 +45,7 @@ window.onpopstate = (e)=>{
 // Common Functions
 function GoUsingAjax(a) {
 
-    if(a.search){
+    if(window.qObj.m){
         let qObj = qs.parse(a.search);
         qObj.m = window.qObj.m;
         a.search = qs.stringify(qObj);
