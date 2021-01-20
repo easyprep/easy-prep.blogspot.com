@@ -12,7 +12,7 @@ const qs = {
     },
     parse: (str) => {
         let json = {};
-        str.split(/[?&]/).filter((a,i) => i).forEach(a => {
+        str.split(/[?&]/).filter((a, i) => i).forEach(a => {
             let f = a.split('=');
             json[f[0]] = f[1];
         });
@@ -93,7 +93,7 @@ function loadFromServer(a) {
 function parseContent(doc, a) {
     let htm = $('#app', doc).innerHTML;
     let title = $('title', doc)[0].text;
-    let href = a.href;
+    let href = a.pathname + removeQueryParam(a.search, ['m']);
     return { htm, title, href };
 }
 
@@ -103,8 +103,9 @@ function showContent(cache) {
 }
 
 function getCache(a) {
-    let storage = a.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
-    return storage[a.href] ? JSON.parse(storage[a.href]) : null;
+    let path = a.pathname + removeQueryParam(a.search, ['m']);
+    let storage = path.indexOf('.html') != -1 ? localStorage : sessionStorage;
+    return storage[path] ? JSON.parse(storage[path]) : null;
 }
 
 function setCache(cache) {
@@ -114,4 +115,12 @@ function setCache(cache) {
     } catch (e) {
         console.log(e);
     }
+}
+
+function removeQueryParam(str, params) {
+    let qObj = qs.parse(str);
+    params.forEach(p => {
+        delete qObj[p];
+    });
+    return qs.stringify(qObj);
 }
