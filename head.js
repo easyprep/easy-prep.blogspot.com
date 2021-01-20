@@ -110,7 +110,7 @@ function parseContent(doc) {
 }
 
 function showContent(cache) {
-    $('#app').innerHTML = cache.htm;
+    $('#app').innerHTML = cache.html;
     document.title = cache.title;
 }
 
