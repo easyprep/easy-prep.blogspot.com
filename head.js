@@ -6,16 +6,17 @@ const longTermCache = 30; //minutes
 
 // Query String
 const qs = {
-    stringify: (json)=>{
-    return '?' + 
-        Object.keys(json).map(function(key) {
-            return encodeURIComponent(key) + '=' +
-                encodeURIComponent(json[key]);
-        }).join('&');
+    stringify: (json) => {
+        let qs =
+            Object.keys(json).map(function (key) {
+                return encodeURIComponent(key) + '=' +
+                    encodeURIComponent(json[key]);
+            }).join('&');
+        return qs ? '?' + qs : '';
     },
-    parse:(str)=>{
+    parse: (str) => {
         let json = {};
-        str.split(/[?&]/).filter(a=>!!a).forEach(a=>{
+        str.split(/[?&]/).filter(a => !!a).forEach(a => {
             let f = a.split('=');
             json[f[0]] = f[1];
         });
@@ -32,31 +33,31 @@ const $ = function (selector, doc = document) {
 window.qObj = qs.parse(location.search);
 
 // Events
-window.onload = (e)=>{
+window.onload = (e) => {
     let cache = parseContent(document, location);
     setCache(cache);
     window.history.pushState(cache, cache.title, cache.href);
 }
 
-window.onpopstate = (e)=>{
+window.onpopstate = (e) => {
     showContent(e.state);
 }
 
 // Common Functions
 function GoUsingAjax(a) {
-    
-    if(a.nodeName == 'FORM'){
+
+    if (a.nodeName == 'FORM') {
         let url = a.action + '?' + new URLSearchParams(new FormData(a)).toString();
         a = document.createElement('a');
         a.href = url;
     }
 
-    if(window.qObj.m){
+    if (window.qObj.m) {
         let qObj = qs.parse(a.search);
         qObj.m = window.qObj.m;
         a.search = qs.stringify(qObj);
     }
-    
+
     if (location.href == a.href) return;
 
     let cache = getCache(a);
@@ -81,7 +82,7 @@ function loadFromServer(a) {
         let doc = document.createElement('html');
         doc.innerHTML = html;
 
-        let cache = parseContent(doc,a);
+        let cache = parseContent(doc, a);
         setCache(cache);
         showContent(cache);
         window.history.pushState(cache, cache.title, cache.href);
@@ -93,7 +94,7 @@ function loadFromServer(a) {
     });
 }
 
-function parseContent(doc,a) {
+function parseContent(doc, a) {
     let htm = $('#app', doc).innerHTML;
     let title = $('title', doc)[0].text;
     let href = a.href;
@@ -106,17 +107,28 @@ function showContent(cache) {
 }
 
 function getCache(a) {
-    let s = a.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
-    return s[a.href] ? JSON.parse(s[a.href]) : null;
+    a = sanitizeLink(a);
+    let storage = a.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
+    return storage[a.href] ? JSON.parse(s[a.href]) : null;
 }
 
 function setCache(cache) {
-    let s = cache.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
+    let a = document.createElement('a');
+    a.href = cache.href;
+    a = sanitizeLink(a);
+    let s = a.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
     try {
-        s[cache.href] = JSON.stringify({ts:Date.now(),...cache});
+        s[a.href] = JSON.stringify({ ts: Date.now(), ...cache });
     } catch (e) {
         console.log(e);
     }
+}
+
+function sanitizeLink(a) {
+    let qObj = qs.parse(a.search);
+    delete qObj.m;
+    a.search = qs.stringify(qObj);
+    return a;
 }
 
 
