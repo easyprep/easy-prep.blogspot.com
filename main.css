@@ -95,7 +95,8 @@ border-top: 1px solid lightgray;
 
 /*--- MISC ---*/
 .cache-ts{
-    padding: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: smaller;
     margin: 0;
     background: lightyellow;
 }
