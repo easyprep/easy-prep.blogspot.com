@@ -13,13 +13,13 @@ const $ = function (selector, doc = document) {
 }
 
 // Events
-window.onload = function (e) {
-    let cache = this.parseContent(document, location);
-    this.setCache(cache);
+window.onload = (e)=>{
+    let cache = parseContent(document, location);
+    setCache(cache);
     window.history.pushState(cache, cache.title, cache.href);
 }
 
-window.onpopstate = function (e) {
+window.onpopstate = (e)=>{
     showContent(e.state);
 }
 
