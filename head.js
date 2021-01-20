@@ -30,9 +30,9 @@ window.qObj = qs.parse(location.search);
 
 // Events
 window.onload = (e) => {
-    let cache = parseContent(document, location);
-    setCache(cache);
-    window.history.pushState(cache, cache.title, cache.href);
+    let cache = parseContent(document);
+    setCache(location, cache);
+    window.history.pushState(cache, cache.title, location.href);
 }
 
 window.onpopstate = (e) => {
@@ -60,7 +60,7 @@ function GoUsingAjax(a) {
 
     if (cache) {
         showContent(cache);
-        window.history.pushState(cache, cache.title, cache.href);
+        window.history.pushState(cache, cache.title, a.href);
         console.log('From Cache : ', a.href);
     } else {
         loadFromServer(a);
@@ -78,10 +78,10 @@ function loadFromServer(a) {
         let doc = document.createElement('html');
         doc.innerHTML = html;
 
-        let cache = parseContent(doc, a);
-        setCache(cache);
+        let cache = parseContent(doc);
+        setCache(a, cache);
         showContent(cache);
-        window.history.pushState(cache, cache.title, cache.href);
+        window.history.pushState(cache, cache.title, a.href);
 
         console.log('From Server : ', a.href);
     }).catch(e => {
@@ -90,11 +90,10 @@ function loadFromServer(a) {
     });
 }
 
-function parseContent(doc, a) {
+function parseContent(doc) {
     let htm = $('#app', doc).innerHTML;
     let title = $('title', doc)[0].text;
-    let href = a.pathname + removeQueryParam(a.search, ['m']);
-    return { htm, title, href };
+    return { htm, title };
 }
 
 function showContent(cache) {
@@ -108,10 +107,11 @@ function getCache(a) {
     return storage[path] ? JSON.parse(storage[path]) : null;
 }
 
-function setCache(cache) {
-    let s = cache.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
+function setCache(a, cache) {
+    let path = a.pathname + removeQueryParam(a.search, ['m']);
+    let storage = path.indexOf('.html') != -1 ? localStorage : sessionStorage;
     try {
-        s[cache.href] = JSON.stringify({ ts: Date.now(), ...cache });
+        storage[path] = JSON.stringify({ ts: Date.now(), ...cache });
     } catch (e) {
         console.log(e);
     }
