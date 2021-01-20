@@ -109,7 +109,8 @@ function showContent(cache) {
 function getCache(a) {
     a = sanitizeLink(a);
     let storage = a.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
-    return storage[a.href] ? JSON.parse(s[a.href]) : null;
+    let path = sni
+    return storage[a.href] ? JSON.parse(storage[a.href]) : null;
 }
 
 function setCache(cache) {
