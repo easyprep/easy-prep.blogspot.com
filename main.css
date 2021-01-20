@@ -5,7 +5,8 @@ body{
 }
 
 a,a:hover,a:visited{
-text-decoration:none;
+    text-decoration:none;
+    color: orangered;
 }
 
 form {
@@ -85,10 +86,10 @@ border-top: 1px solid lightgray;
 }
 
 .sidebar > .widget,
-.footer > .widget
- {
-padding: 1rem;
+.footer > .widget {
+    padding: 1rem;
 }
+
 /*--- Layout ---*/
 
 
@@ -143,14 +144,19 @@ border-top:none;
 
 /*--- Pager ---*/
 .blog-pager{
-display:flex;
+    display:flex;
     padding: 1rem;
-justify-content: center!important;
+    justify-content: center!important;
 }
 
-.blog-pager>a{
-border: 1px solid lightgray;
+.blog-pager >  a{
+    border: 1px solid lightgray;
     padding: 0.5rem .75rem;
+}
+
+.blog-pager >  a:hover{
+    background: #4CAF50;
+    color: white;
 }
 /*--- Pager ---*/
 
