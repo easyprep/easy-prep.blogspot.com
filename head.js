@@ -1,6 +1,5 @@
 console.log('head.js');
-const m = parseInt(location.search.split(/[?&]/).filter(a=>a.split('=')[0]=='m').map(a=>a.split('=')[1]).join());
-console.log(m);
+window.qObj = qs.parse(location.search);
 
 // Constants
 const shortTermCache = 1; //minute
@@ -25,6 +24,12 @@ window.onpopstate = (e)=>{
 
 // Common Functions
 function GoUsingAjax(a) {
+
+    if(a.search){
+        let qObj = qs.parse(a.search);
+        qObj.m = window.qObj.m;
+        a.search = qs.stringify(qObj);
+    }
     
     if (location.href == a.href) return;
 
@@ -84,6 +89,24 @@ function setCache(cache) {
         s[cache.href] = JSON.stringify(cache);
     } catch (e) {
         console.log(e);
+    }
+}
+
+const qs = {
+    stringify: (json)=>{
+    return '?' + 
+        Object.keys(json).map(function(key) {
+            return encodeURIComponent(key) + '=' +
+                encodeURIComponent(json[key]);
+        }).join('&');
+    },
+    parse:(str)=>{
+        let json = {};
+        str.split(/[?&]/).filter(a=>!!a).forEach(a=>{
+            let f = a.split('=');
+            json[f[0]] = f[1];
+        });
+        return json;
     }
 }
 
