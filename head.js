@@ -26,13 +26,13 @@ const $ = function (selector, doc = document) {
 }
 
 const appendChild = (html, parent)=>{
-let child = document.createElement('html');
+let child = document.createElement('div');
 child.innerHTML = html;
 parent.appendChild(child);
 }
 
 const prependChild = (html, parent)=>{
-let child = document.createElement('html');
+let child = document.createElement('div');
 child.innerHTML = html;
 parent.insertBefore(child,parent.firstChild);
 }
