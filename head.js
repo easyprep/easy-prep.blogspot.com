@@ -25,16 +25,16 @@ const $ = function (selector, doc = document) {
     return selector.split(/[ >]/).pop().indexOf('#') == 0 ? doc.querySelector(selector) : doc.querySelectorAll(selector);
 }
 
-const appendChild = (html, parent)=>{
-let child = document.createElement('div');
-child.innerHTML = html;
-parent.appendChild(child);
+const appendChild = (html, parent) => {
+    let child = document.createElement('div');
+    child.innerHTML = html;
+    parent.appendChild(child);
 }
 
-const prependChild = (html, parent)=>{
-let child = document.createElement('div');
-child.innerHTML = html;
-parent.insertBefore(child,parent.firstChild);
+const prependChild = (html, parent) => {
+    let child = document.createElement('div');
+    child.innerHTML = html;
+    parent.insertBefore(child, parent.firstChild);
 }
 
 //Main
@@ -74,7 +74,7 @@ function GoUsingAjax(a) {
         showContent(cache);
         window.history.pushState(cache, cache.title, a.href);
         console.log('From Cache : ', a.href);
-        prependChild('<p>'+cache.ts+'</p>',$('#main'));
+        prependChild('<p class="cache-ts">Page is ' + getCacheAge(cache.ts).map(item=>`${item.value} ${item.key}`) + ' old. Refresh to get latest.</p>', $('#main'));
     } else {
         loadFromServer(a);
     }
@@ -136,4 +136,28 @@ function removeQueryParam(str, params) {
         delete qObj[p];
     });
     return qs.stringify(qObj);
+}
+
+function getCacheAge(ts) {
+    let d = Math.abs(Date.now() - ts) / 1000;   // delta
+    let r = [];                                 // result
+    let s = {                                   // structure
+        year: 31536000,
+        month: 2592000,
+        week: 604800,                           // uncomment row to ignore
+        day: 86400,                             // feel free to add your own row
+        hour: 3600,
+        minute: 60,
+        second: 1
+    };
+
+    Object.keys(s).forEach(function (key) {
+        let item = {key};
+        item.value = Math.floor(d / s[key]);
+        if(item.value>1)item.key += 's';
+        r.push(item);
+        d -= item.value * s[key];
+    });
+
+    return r;
 }
