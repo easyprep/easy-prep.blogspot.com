@@ -25,6 +25,18 @@ const $ = function (selector, doc = document) {
     return selector.split(/[ >]/).pop().indexOf('#') == 0 ? doc.querySelector(selector) : doc.querySelectorAll(selector);
 }
 
+const appendChild = (html, parent)=>{
+let child = document.createElement('html');
+child.innerHTML = html;
+parent.appendChild(child);
+}
+
+const prependChild = (html, parent)=>{
+let child = document.createElement('html');
+child.innerHTML = html;
+parent.insertBefore(child,parent.firstChild);
+}
+
 //Main
 window.qObj = qs.parse(location.search);
 
@@ -62,6 +74,7 @@ function GoUsingAjax(a) {
         showContent(cache);
         window.history.pushState(cache, cache.title, a.href);
         console.log('From Cache : ', a.href);
+        prependChild('<p>'+cache.ts+'</p>',$('#main'));
     } else {
         loadFromServer(a);
     }
@@ -93,7 +106,7 @@ function loadFromServer(a) {
 function parseContent(doc) {
     let htm = $('#app', doc).innerHTML;
     let title = $('title', doc)[0].text;
-    return { htm, title };
+    return { title, html };
 }
 
 function showContent(cache) {
