@@ -1,15 +1,35 @@
 console.log('head.js');
-window.qObj = qs.parse(location.search);
 
 // Constants
 const shortTermCache = 1; //minute
 const longTermCache = 30; //minutes
 
+// Query String
+const qs = {
+    stringify: (json)=>{
+    return '?' + 
+        Object.keys(json).map(function(key) {
+            return encodeURIComponent(key) + '=' +
+                encodeURIComponent(json[key]);
+        }).join('&');
+    },
+    parse:(str)=>{
+        let json = {};
+        str.split(/[?&]/).filter(a=>!!a).forEach(a=>{
+            let f = a.split('=');
+            json[f[0]] = f[1];
+        });
+        return json;
+    }
+}
 
 // Dom Selector
 const $ = function (selector, doc = document) {
     return selector.split(/[ >]/).pop().indexOf('#') == 0 ? doc.querySelector(selector) : doc.querySelectorAll(selector);
 }
+
+//Main
+window.qObj = qs.parse(location.search);
 
 // Events
 window.onload = (e)=>{
@@ -92,23 +112,6 @@ function setCache(cache) {
     }
 }
 
-const qs = {
-    stringify: (json)=>{
-    return '?' + 
-        Object.keys(json).map(function(key) {
-            return encodeURIComponent(key) + '=' +
-                encodeURIComponent(json[key]);
-        }).join('&');
-    },
-    parse:(str)=>{
-        let json = {};
-        str.split(/[?&]/).filter(a=>!!a).forEach(a=>{
-            let f = a.split('=');
-            json[f[0]] = f[1];
-        });
-        return json;
-    }
-}
 
 //Extra
     // if (a.pathname == '/' || a.pathname.indexOf('/search/') == 0) {
