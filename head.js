@@ -104,7 +104,7 @@ function loadFromServer(a) {
 }
 
 function parseContent(doc) {
-    let htm = $('#app', doc).innerHTML;
+    let html = $('#app', doc).innerHTML;
     let title = $('title', doc)[0].text;
     return { title, html };
 }
