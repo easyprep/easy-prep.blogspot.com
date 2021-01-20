@@ -1,9 +1,5 @@
 console.log('head.js');
 
-// Constants
-const shortTermCache = 1; //minute
-const longTermCache = 30; //minutes
-
 // Query String
 const qs = {
     stringify: (json) => {
@@ -16,7 +12,7 @@ const qs = {
     },
     parse: (str) => {
         let json = {};
-        str.split(/[?&]/).filter(a => !!a).forEach(a => {
+        str.split(/[?&]/).filter((a,i) => i).forEach(a => {
             let f = a.split('=');
             json[f[0]] = f[1];
         });
@@ -107,26 +103,15 @@ function showContent(cache) {
 }
 
 function getCache(a) {
-    let link = sanitizeLink(a);
-    let storage = link.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
-    return storage[link.href] ? JSON.parse(storage[link.href]) : null;
+    let storage = a.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
+    return storage[a.href] ? JSON.parse(storage[a.href]) : null;
 }
 
 function setCache(cache) {
-    let a = document.createElement('a');
-    a.href = cache.href;
-    let link = sanitizeLink(a);
-    let s = link.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
+    let s = cache.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
     try {
-        s[link.href] = JSON.stringify({ ts: Date.now(), ...cache });
+        s[cache.href] = JSON.stringify({ ts: Date.now(), ...cache });
     } catch (e) {
         console.log(e);
     }
-}
-
-function sanitizeLink(a) {
-    let qObj = qs.parse(a.search);
-    delete qObj.m;
-    a.search = qs.stringify(qObj);
-    return a;
 }
