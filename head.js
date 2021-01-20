@@ -78,6 +78,7 @@ function loadFromServer(a) {
         let cache = parseContent(doc,a);
         setCache(cache);
         showContent(cache);
+        window.history.pushState(cache, cache.title, cache.href);
 
         console.log('From Server : ', a.href);
     }).catch(e => {
