@@ -104,13 +104,13 @@ function loadFromServer(a) {
 }
 
 function parseContent(doc) {
-    let html = $('#app', doc).innerHTML;
+    let content = $('#app', doc).innerHTML;
     let title = $('title', doc)[0].text;
-    return { title, html };
+    return { title, content };
 }
 
 function showContent(cache) {
-    $('#app').innerHTML = cache.html;
+    $('#app').innerHTML = cache.content;
     document.title = cache.title;
 }
 
