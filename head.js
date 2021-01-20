@@ -74,7 +74,9 @@ function GoUsingAjax(a) {
         showContent(cache);
         window.history.pushState(cache, cache.title, a.href);
         console.log('From Cache : ', a.href);
-        prependChild('<p class="cache-ts">Page is ' + getCacheAge(cache.ts).map(item=>`${item.value} ${item.key}`) + ' old. Refresh to get latest.</p>', $('#main'));
+        if(Date.now()-cache.ts > 60*1000){
+            prependChild('<p class="cache-ts">Page is ' + getCacheAge(cache.ts).filter(item=>item.value).map(item=>`${item.value} ${item.key}`) + ' old. Refresh to get latest.</p>', $('#main'));
+        }
     } else {
         loadFromServer(a);
     }
