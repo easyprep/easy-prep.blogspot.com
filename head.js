@@ -107,18 +107,18 @@ function showContent(cache) {
 }
 
 function getCache(a) {
-    a = sanitizeLink(a);
-    let storage = a.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
-    return storage[a.href] ? JSON.parse(storage[a.href]) : null;
+    let link = sanitizeLink(a);
+    let storage = link.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
+    return storage[link.href] ? JSON.parse(storage[link.href]) : null;
 }
 
 function setCache(cache) {
     let a = document.createElement('a');
     a.href = cache.href;
-    a = sanitizeLink(a);
-    let s = a.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
+    let link = sanitizeLink(a);
+    let s = link.href.indexOf('.html') != -1 ? localStorage : sessionStorage;
     try {
-        s[a.href] = JSON.stringify({ ts: Date.now(), ...cache });
+        s[link.href] = JSON.stringify({ ts: Date.now(), ...cache });
     } catch (e) {
         console.log(e);
     }
@@ -130,15 +130,3 @@ function sanitizeLink(a) {
     a.search = qs.stringify(qObj);
     return a;
 }
-
-
-//Extra
-    // if (a.pathname == '/' || a.pathname.indexOf('/search/') == 0) {
-    //     expiry = shortTermCache;
-    // }
-
-    // if (!!a.search && a.pathname == '/search') {
-    //     cache.path = a.pathname + a.search + a.hash;
-    // } else {
-    //     localStorage['cache:/' + a.pathname] = JSON.stringify(cache);
-    // }
