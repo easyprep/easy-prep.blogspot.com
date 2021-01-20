@@ -14,7 +14,7 @@ const $ = function (selector, doc = document) {
 
 // Events
 window.onload = function (e) {
-    let cahce = parseContent(document);
+    let cahce = parseContent(document, location);
     window.history.pushState(cache, cache.title, cache.href);
 }
 
@@ -60,7 +60,7 @@ function loadFromServer(a) {
     });
 }
 
-function parseContent(doc) {
+function parseContent(doc,a) {
     let htm = $('#app', doc).innerHTML;
     let title = $('title', doc)[0].text;
     let href = a.href;
