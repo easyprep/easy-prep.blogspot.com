@@ -187,3 +187,31 @@ border-top:none;
 /*--- Search ---*/
 
 
+/*--- Labels ---*/
+.cloud-label-widget-content{
+	display: flex;
+}
+.cloud-label-widget-content > .label-size {
+	border: 1px solid lightgray;
+    padding: 0.25rem 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 1rem;
+}
+.cloud-label-widget-content > .label-size:hover, 
+.cloud-label-widget-content > .label-size:hover * {
+	background: #4CAF50;
+	color: white;
+}
+
+.cloud-label-widget-content .label-count::before { content: '('; }
+.cloud-label-widget-content .label-count::after { content: ')'; }
+.cloud-label-widget-content .label-count{ color:lightgray; }
+/*--- Labels ---*/
+
+
+/*--- Text Widget---*/
+.widget.Text{
+    color: gray;
+    text-align: justify;
+}
+/*--- Text Widget ---*/
