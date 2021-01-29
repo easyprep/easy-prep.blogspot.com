@@ -164,6 +164,10 @@ border-top:none;
     margin: 0.5rem;
 }
 
+.Blog .post h3.title {
+    margin-top: 0;
+}
+
 /*--- Blog ---*/
 
 
@@ -190,6 +194,10 @@ border-top:none;
 .sidebar > .widget {
     box-shadow: 1px 1px 6px 0px #ccc;
     margin: 0.5rem;
+}
+
+.widget h3.title {
+    margin-top: 0;
 }
 
 /*--- Sidebar ---*/
