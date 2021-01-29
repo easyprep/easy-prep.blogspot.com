@@ -2,6 +2,7 @@ body{
     font-family: sans-serif;
     margin: 0;
     padding: 0;
+    background: #f8f8f8;
 }
 
 a,a:hover,a:visited{
@@ -162,6 +163,7 @@ border-top:none;
 .Blog .post {
     box-shadow: 1px 1px 6px 0px #ccc;
     margin: 0.5rem;
+    background: white;
 }
 
 .Blog .post h3.title {
@@ -194,6 +196,8 @@ border-top:none;
 .sidebar > .widget {
     box-shadow: 1px 1px 6px 0px #ccc;
     margin: 0.5rem;
+    border-radius: 2px;
+    background: white;
 }
 
 .widget h3.title {
