@@ -158,6 +158,12 @@ padding: 1rem;
 .Blog .post:first-child{
 border-top:none;
 }
+
+.Blog .post {
+    box-shadow: 1px 1px 6px 0px #ccc;
+    margin: 0.5rem;
+}
+
 /*--- Blog ---*/
 
 
@@ -179,6 +185,14 @@ border-top:none;
 }
 /*--- Pager ---*/
 
+
+/*--- Sidebar ---*/
+.sidebar > .widget {
+    box-shadow: 1px 1px 6px 0px #ccc;
+    margin: 0.5rem;
+}
+
+/*--- Sidebar ---*/
 
 /*--- Search ---*/
 #BlogSearch1 form {
