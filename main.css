@@ -70,10 +70,10 @@ form > *{
 .header { }
 .main {}
 .sidebar { 
-border-left: 1px solid lightgray;
+/*border-left: 1px solid lightgray;*/
 }
 .footer { 
-border-top: 1px solid lightgray;
+/*border-top: 1px solid lightgray;*/
 }
 
 .grid-container {
@@ -88,8 +88,8 @@ border-top: 1px solid lightgray;
 }
 
 .sidebar {
-border-left: none;
-border-top: 1px solid lightgray;
+/*border-left: none;*/
+/*border-top: 1px solid lightgray;*/
 }
 
 }
@@ -151,7 +151,7 @@ border-top: 1px solid lightgray;
 /*--- Blog ---*/
 .Blog .post{
 border-top: 1px solid lightgray;
-margin-bottom: 1rem;
+/*margin-bottom: 1rem;*/
 padding: 1rem;
 }
 
