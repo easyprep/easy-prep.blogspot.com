@@ -1,8 +1,15 @@
+:root {
+  --bg-body: #f8f8f8;
+  --border: lightgray;
+  --outline: lightblue;
+  --theme-accent: orangered;
+}
+
 body{
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background: #f8f8f8;
+    background: var(--bg-body);
 }
 
 a,a:hover,a:visited{
@@ -17,11 +24,11 @@ form {
 input{
     padding: 0.5rem 0.75rem;
     border-radius: 2px;
-    border: 1px solid lightgray;
+    border: 1px solid var(--border);
 }
 
 input:focus{
-    outline-color: lightblue !important;
+    outline-color: var(--outline) !important;
 }
 
 /*--- Loader ---*/
@@ -38,7 +45,7 @@ input:focus{
 	margin:auto;
   border: 16px solid #ffffff;
   border-radius: 50%;
-  border-top: 16px solid #4caf50;
+  border-top: 16px solid var(--theme-accent);
   width: 120px;
   height: 120px;
   -webkit-animation: spin 1s linear infinite; /* Safari */
@@ -135,14 +142,14 @@ input:focus{
 }
 
 .PageList .active {
-  background-color: #4CAF50;
+  background-color: var(--theme-accent);
 }
 /*--- PageList ---*/
 
 
 /*--- Blog ---*/
 .Blog .post{
-border-top: 1px dashed lightgray;
+border-top: 1px dashed var(--border);
 /*margin-bottom: 1rem;*/
 padding: 1rem;  
 }
@@ -172,12 +179,12 @@ padding: 1rem;
 }
 
 .blog-pager >  a{
-    border: 1px solid lightgray;
+    border: 1px solid var(--border);
     padding: 0.5rem .75rem;
 }
 
 .blog-pager >  a:hover{
-    background: #4CAF50;
+    background: var(--theme-accent);
     color: white;
 }
 /*--- Pager ---*/
@@ -210,7 +217,7 @@ padding: 1rem;
 
 .search-input, .follow-by-email-address { width: 60%;}
 .sidebar input[type='submit']{ width: 40%; cursor: pointer;}
-.sidebar input[type='submit']:hover { background: #4CAF50; color: #fff;}
+.sidebar input[type='submit']:hover { background: var(--theme-accent); color: #fff;}
 
 /*--- Sidebar ---*/
 
@@ -233,7 +240,7 @@ padding: 1rem;
 }
 .cloud-label-widget-content > .label-size:hover, 
 .cloud-label-widget-content > .label-size:hover * {
-	background: #4CAF50;
+	background: var(--theme-accent);
 	color: white;
 }
 
