@@ -201,11 +201,11 @@ border-top:none;
 }
 
 .sidebar form > *{
-    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 
-.sidebar form > *:last-child {
-    margin-right: 0;
+.sidebar form > *:first-child {
+    margin-left: 0;
 }
 
 .search-input, .follow-by-email-address { width: 60%;}
