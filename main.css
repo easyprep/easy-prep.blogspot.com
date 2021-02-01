@@ -21,16 +21,7 @@ input{
 }
 
 input:focus{
-    border-color: lightblue !important;
-}
-
-form{
-    display:flex;
-    justify-content: flex-start;
-}
-
-form > *{
-    margin-right: 0.5rem;
+    outline-color: lightblue !important;
 }
 
 /*--- Loader ---*/
@@ -203,6 +194,23 @@ border-top:none;
 .widget h3.title {
     margin-top: 0;
 }
+
+.sidebar form{
+    display:flex;
+    justify-content: flex-start;
+}
+
+.sidebar form > *{
+    margin-right: 0.5rem;
+}
+
+.sidebar form > *:last-child {
+    margin-right: 0;
+}
+
+.search-input, .follow-by-email-address { width: 60%;}
+.sidebar input[type='submit']{ width: 40%; cursor: pointer;}
+.sidebar input[type='submit']:hover { background: #4CAF50; color: #fff;}
 
 /*--- Sidebar ---*/
 
