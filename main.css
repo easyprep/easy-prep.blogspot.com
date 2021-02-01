@@ -67,7 +67,7 @@ input:focus{
 
 /*--- Layout ---*/
 .header { }
-.main { margin-right: 0.5rem; }
+.main { margin-right: -0.5rem; }
 .sidebar { 
 /*border-left: 1px solid lightgray;*/
 }
