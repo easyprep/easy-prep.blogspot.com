@@ -152,6 +152,13 @@ input:focus{
 .PageList .active {
   background-color: var(--theme-accent);
 }
+
+.PageList .brand {
+	font-weight: bold;
+	text-shadow: 2px 2px 2px var(--theme-accent);
+    font-size: 1.25rem;
+    line-height: 1.15rem;
+}
 /*--- PageList ---*/
 
 
