@@ -74,9 +74,9 @@ function GoUsingAjax(a) {
         showContent(cache);
         window.history.pushState(cache, cache.title, a.href);
         console.log('From Cache : ', a.href);
-        if(Date.now()-cache.ts > 60*1000){
-            prependChild('<p class="cache-ts">Page is ' + getCacheAge(cache.ts).filter(item=>item.value).map(item=>`<b>${item.value}</b> ${item.key}`).join(' ') + ' old. Refresh to get latest.</p>', $('#main'));
-        }
+        // if(Date.now()-cache.ts > 60*1000){
+        //     prependChild('<p class="cache-ts">Page is ' + getCacheAge(cache.ts).filter(item=>item.value).map(item=>`<b>${item.value}</b> ${item.key}`).join(' ') + ' old. Refresh to get latest.</p>', $('#main'));
+        // }
     } else {
         loadFromServer(a);
     }

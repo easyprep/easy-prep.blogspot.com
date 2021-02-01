@@ -83,7 +83,11 @@ input:focus{
 @media (max-width:600px){
 
 .grid-container {
-  grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
+}
+
+.main{
+    margin-right: -0.5rem !important;
 }
 
 .sidebar {
