@@ -142,22 +142,22 @@ input:focus{
 
 /*--- Blog ---*/
 .Blog .post{
-/*border-top: 1px solid lightgray;*/
+border-top: 1px dashed lightgray;
 /*margin-bottom: 1rem;*/
-padding: 1rem;
+padding: 1rem;  
 }
 
 .Blog .post:first-child{
-border-top:none;
+    border-top:none;
 }
 
-.Blog .post {
+.Blog .blog-posts {
     box-shadow: 1px 1px 6px 0px #ccc;
     margin: 0.5rem;
     background: white;
 }
 
-.Blog .post h3.title {
+.Blog .post h3.post-title {
     margin-top: 0;
 }
 
