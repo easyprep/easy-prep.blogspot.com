@@ -227,6 +227,7 @@ padding: 1rem;
     padding: 0.25rem 0.75rem;
     background: #efefef;
     border:1px solid var(--border);
+    border-radius: 2px;
 }
 
 .jump-link > a:hover{
