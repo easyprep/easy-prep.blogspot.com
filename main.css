@@ -2,19 +2,22 @@
   --bg-body: #f8f8f8;
   --border: lightgray;
   --outline: lightblue;
-  --theme-accent: orangered;
+  --theme-accent: teal;
 }
 
 body{
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background: var(--bg-body);
 }
 
-a,a:hover,a:visited{
+a,
+a:visited,
+a:hover,
+a:active{
     text-decoration:none;
-    color: orangered;
+    color: var(--theme-accent);
 }
 
 form {
@@ -69,6 +72,7 @@ input:focus{
 .header { 
     position: sticky;
     top: 0; 
+    z-index: 1;
 }
 
 .main { 
@@ -168,6 +172,15 @@ input:focus{
 
 
 /*--- Blog ---*/
+article.view-is-multiple-items {
+    border-top: 1px dashed var(--border);
+}
+
+article.view-is-multiple-items:first-child {
+    border-top: none;
+}
+
+
 .Blog .post{
 border-top: 1px dashed var(--border);
 /*margin-bottom: 1rem;*/
@@ -187,8 +200,39 @@ padding: 1rem;
 
 .Blog .post h3.post-title {
     margin-top: 0;
+    margin-bottom: 0.5rem;
 }
 
+.Blog .post-header {
+	font-size: smaller;
+    font-style: italic;
+}
+
+.Blog article .post-body { 
+    margin: 1rem 0; 
+    text-align: justify;
+}
+
+.Blog article.view-is-post .post-body { 
+    border-top: 1px dashed var(--border); 
+    padding-top: 1rem;
+}
+
+.jump-link { 
+	text-align: right;
+	margin-top: -2rem;
+}
+
+.jump-link > a{
+    padding: 0.25rem 0.75rem;
+    background: white;
+    border:1px solid var(--border);
+}
+
+.jump-link > a:hover{
+   background: var(--theme-accent);
+   color: white;
+}
 /*--- Blog ---*/
 
 
@@ -254,12 +298,13 @@ padding: 1rem;
 
 /*--- Labels ---*/
 .cloud-label-widget-content{
-	display: flex;
+    display: flex;
+    flex-wrap: wrap;
 }
 .cloud-label-widget-content > .label-size {
 	border: 1px solid lightgray;
     padding: 0.25rem 0.5rem;
-    margin-right: 0.5rem;
+    margin: 0.25rem;
     border-radius: 1rem;
 }
 .cloud-label-widget-content > .label-size:hover, 
