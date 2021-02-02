@@ -359,6 +359,17 @@ article.view-is-multiple-items:first-child {
 }
 /*--- Labels ---*/
 
+.post-count::before {
+  content: '{';
+}
+.post-count::after {
+  content: '}';
+}
+.post-count {
+  color: lightgray;
+  letter-spacing: 2px;
+}
+
 /*--- Text Widget---*/
 .widget.Text {
   color: gray;
