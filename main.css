@@ -243,6 +243,7 @@ article.view-is-multiple-items:first-child {
   padding: 0.5rem 0.75rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  background-color: white;
 }
 
 .blog-pager > a:hover {
