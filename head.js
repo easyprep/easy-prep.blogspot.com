@@ -69,6 +69,8 @@ function GoUsingAjax(event) {
     let url = a.action + '?' + new URLSearchParams(new FormData(a)).toString();
     a = document.createElement('a');
     a.href = url;
+  } else {
+    a = a.closest('a');
   }
 
   if (window.qObj.m) {
