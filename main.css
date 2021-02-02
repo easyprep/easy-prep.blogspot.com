@@ -204,11 +204,11 @@ article.view-is-multiple-items:first-child {
   font-style: italic;
 }
 
-.Blog .post-header .byline.post-labels > a::before {
+.Blog .post-header .byline.post-labels > a::after {
   content: ', ';
 }
 
-.Blog .post-header .byline.post-labels > a:first::before {
+.Blog .post-header .byline.post-labels > a:last-child::after {
   content: '';
 }
 
