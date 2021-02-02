@@ -225,7 +225,7 @@ padding: 1rem;
 
 .jump-link > a{
     padding: 0.25rem 0.75rem;
-    background: white;
+    background: #efefef;
     border:1px solid var(--border);
 }
 
