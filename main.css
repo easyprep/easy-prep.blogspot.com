@@ -36,6 +36,7 @@ input {
   padding: 0.5rem 0.75rem;
   border-radius: 2px;
   border: 1px solid var(--border);
+  outline-color: var(--border);
 }
 
 input:focus {
@@ -262,7 +263,7 @@ article.view-is-multiple-items:first-child {
 
 .sidebar > .widget:hover {
   box-shadow: 2px 2px 6px 0px #aaa;
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
 }
 
 .widget h3.title {
