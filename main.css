@@ -208,7 +208,7 @@ article.view-is-multiple-items:first-child {
   content: ', ';
 }
 
-.Blog .post-header .byline.post-labels > a:first-child::before {
+.Blog .post-header .byline.post-labels > a:first::before {
   content: '';
 }
 
