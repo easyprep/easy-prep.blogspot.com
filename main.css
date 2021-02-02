@@ -204,6 +204,10 @@ article.view-is-multiple-items:first-child {
   font-style: italic;
 }
 
+.Blog .post-header .byline.post-labels {
+  display: block;
+}
+
 .Blog .post-header .byline.post-labels > a::after {
   content: ', ';
 }
