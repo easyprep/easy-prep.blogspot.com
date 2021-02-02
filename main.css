@@ -313,9 +313,9 @@ padding: 1rem;
 	color: white;
 }
 
-.cloud-label-widget-content .label-count::before { content: '('; }
-.cloud-label-widget-content .label-count::after { content: ')'; }
-.cloud-label-widget-content .label-count{ color:lightgray; }
+.cloud-label-widget-content .label-count::before { content: '{'; }
+.cloud-label-widget-content .label-count::after { content: '}'; }
+.cloud-label-widget-content .label-count{ color:lightgray; letter-spacing: 2px; }
 /*--- Labels ---*/
 
 
