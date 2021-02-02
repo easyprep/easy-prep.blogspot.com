@@ -283,9 +283,18 @@ padding: 1rem;
     margin-left: 0;
 }
 
-.search-input, .follow-by-email-address { width: 60%;}
-.sidebar input[type='submit']{ width: 40%; cursor: pointer;}
-.sidebar input[type='submit']:hover { background: var(--theme-accent); color: #fff;}
+.search-input, .follow-by-email-address { 
+    width: 60%;
+}
+.sidebar input[type='submit']{ 
+    width: 40%; 
+    cursor: pointer;
+    color: var(--theme-accent);
+}
+.sidebar input[type='submit']:hover { 
+    background: var(--theme-accent); 
+    color: #fff;
+}
 
 /*--- Sidebar ---*/
 
