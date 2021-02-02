@@ -59,6 +59,8 @@ window.onpopstate = (e) => {
 
 // Common Functions
 function GoUsingAjax(event) {
+  console.log(event);
+
   event.preventDefault();
 
   let a = event.target;
@@ -132,7 +134,7 @@ function attachEventListener() {
     a.removeEventListener('click', GoUsingAjax);
     a.addEventListener('click', GoUsingAjax);
   });
-  $('#app form').forEach(function (a) {
+  $('#app #BlogSearch1 form').forEach(function (a) {
     a.removeEventListener('submit', GoUsingAjax);
     a.addEventListener('submit', GoUsingAjax);
   });
