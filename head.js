@@ -47,6 +47,7 @@ window.qObj = qs.parse(location.search);
 
 // Events
 window.onload = (e) => {
+  attachEventListener();
   let cache = parseContent(document);
   setCache(location, cache);
   window.history.pushState(cache, cache.title, location.href);
