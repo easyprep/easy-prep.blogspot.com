@@ -204,6 +204,14 @@ article.view-is-multiple-items:first-child {
   font-style: italic;
 }
 
+.Blog .post-header .byline.post-labels > a::before {
+  content: ', ';
+}
+
+.Blog .post-header .byline.post-labels > a:first-child::before {
+  content: '';
+}
+
 .Blog article .post-body {
   margin: 1rem 0;
   text-align: justify;
@@ -245,6 +253,7 @@ article.view-is-multiple-items:first-child {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   background-color: white;
+  border-radius: 2px;
 }
 
 .blog-pager > a:hover {
