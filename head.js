@@ -129,12 +129,12 @@ function showContent(cache) {
 
 function attachEventListener() {
   $('#app a').forEach(function (a) {
-    a.removeEventListener('click', ajaxRequest);
-    a.addEventListener('click', ajaxRequest);
+    a.removeEventListener('click', GoUsingAjax);
+    a.addEventListener('click', GoUsingAjax);
   });
   $('#app form').forEach(function (a) {
-    a.removeEventListener('submit', ajaxRequest);
-    a.addEventListener('submit', ajaxRequest);
+    a.removeEventListener('submit', GoUsingAjax);
+    a.addEventListener('submit', GoUsingAjax);
   });
 }
 
