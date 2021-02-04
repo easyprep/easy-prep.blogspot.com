@@ -208,7 +208,10 @@ article.view-is-multiple-items:first-child {
 
 .Blog .post-header {
   font-size: smaller;
-  font-style: italic;
+  /* font-style: italic; */
+}
+a.timestamp-link {
+    color: initial;
 }
 
 /* .Blog .post-header .byline.post-labels {
