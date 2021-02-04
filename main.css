@@ -228,6 +228,7 @@ a.timestamp-link {
 
 .Blog .post-header .byline.post-labels > a::after {
   content: ', ';
+  letter-spacing: 2px;
 }
 
 .Blog .post-header .byline.post-labels > a:last-child::after {
