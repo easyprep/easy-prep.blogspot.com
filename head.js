@@ -152,16 +152,18 @@ function attachEventListener() {
 }
 
 function showComments(){
-    var disqus_config = function () {
-    this.page.url = location.href;
-    this.page.identifier = location.href;
-    };
-    (function() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://easy-prep.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
+    if($('#disqus_thread')){
+        var disqus_config = function () {
+        this.page.url = location.href;
+        this.page.identifier = location.href;
+        };
+        (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://easy-prep.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    }
 }
 
 function getCache(a) {
