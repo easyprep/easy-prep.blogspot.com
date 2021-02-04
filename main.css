@@ -40,7 +40,14 @@ input {
 }
 
 input:focus {
-  outline-color: var(--outline) !important;
+  outline-color: var(--theme-accent) !important;
+}
+
+.nopostfound {
+    padding: 1rem;
+    text-align: center;
+    font-size: larger;
+    color: darkred;
 }
 
 /*--- Loader ---*/
@@ -234,6 +241,13 @@ article.view-is-multiple-items:first-child {
   padding-top: 1rem;
 }
 
+.Blog .post-body img {
+	max-width: 100%;
+    padding: 0.25rem;
+    margin: 0.5rem;
+    border: 1px solid var(--border);
+}
+
 .jump-link {
   text-align: right;
   margin-top: -2rem;
@@ -309,15 +323,15 @@ article.view-is-multiple-items:first-child {
 .follow-by-email-address {
   width: 60%;
 }
+
 .sidebar input[type='submit'] {
   width: 40%;
   cursor: pointer;
-  background: #efefef;
-  color: var(--theme-accent);
+  background: var(--theme-accent);
+  color: white;   
 }
 .sidebar input[type='submit']:hover {
-  background: var(--theme-accent);
-  color: #fff;
+  box-shadow: 2px 2px 6px 0px lightgray;
 }
 
 /*--- Sidebar ---*/
@@ -359,16 +373,28 @@ article.view-is-multiple-items:first-child {
 }
 /*--- Labels ---*/
 
-.post-count::before {
+/*--- Blog Archive ---*/
+
+#ArchiveList ul {
+    list-style: none;
+    margin: 0.5rem 0.25rem;
+    padding-left: 1rem;
+}
+
+#ArchiveList .post-count::before {
   content: '{';
 }
-.post-count::after {
+
+#ArchiveList .post-count::after {
   content: '}';
 }
-.post-count {
+
+#ArchiveList .post-count {
   color: lightgray;
   letter-spacing: 2px;
 }
+/*--- Blog Archive ---*/
+
 
 /*--- Text Widget---*/
 .widget.Text {
