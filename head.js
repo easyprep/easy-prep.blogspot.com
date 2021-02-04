@@ -47,7 +47,6 @@ window.qObj = qs.parse(location.search);
 
 // Events
 window.onload = (e) => {
-  $('.timestamp-link').forEach(a=>a.removeAttribute('href'));
   attachEventListener();
   let cache = parseContent(document);
   setCache(location, cache);
@@ -138,6 +137,7 @@ function showContent(cache) {
 }
 
 function attachEventListener() {
+  $('.timestamp-link').forEach(a=>a.removeAttribute('href'));
   $('#app a[href]').forEach(function (a) {
     a.removeEventListener('click', GoUsingAjax);
     a.addEventListener('click', GoUsingAjax);
