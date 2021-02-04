@@ -47,7 +47,9 @@ window.qObj = qs.parse(location.search);
 
 // Events
 window.onload = (e) => {
+  $('.timestamp-link').forEach(a=>a.removeAttribute('href'));
   attachEventListener();
+  showComments();
   let cache = parseContent(document);
   setCache(location, cache);
   window.history.pushState(cache, cache.title, location.href);
@@ -132,12 +134,13 @@ function parseContent(doc) {
 function showContent(cache) {
   document.title = cache.title;
   $('#app').innerHTML = cache.content;
+  $('.timestamp-link').forEach(a=>a.removeAttribute('href'));
   attachEventListener();
+  showComments();
   scrollTo(0, 0);
 }
 
 function attachEventListener() {
-  $('.timestamp-link').forEach(a=>a.removeAttribute('href'));
   $('#app a[href]').forEach(function (a) {
     a.removeEventListener('click', GoUsingAjax);
     a.addEventListener('click', GoUsingAjax);
@@ -146,6 +149,19 @@ function attachEventListener() {
     a.removeEventListener('submit', GoUsingAjax);
     a.addEventListener('submit', GoUsingAjax);
   });
+}
+
+function showComments(){
+    var disqus_config = function () {
+    this.page.url = location.href;
+    this.page.identifier = location.href;
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://easy-prep.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
 }
 
 function getCache(a) {
