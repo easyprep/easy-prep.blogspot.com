@@ -142,20 +142,12 @@ function showContent(cache) {
 }
 
 function attachEventListener() {
-    $('#app a[href]').forEach(function (a) {
-        a.removeEventListener('click', GoUsingAjax);
-        a.addEventListener('click', GoUsingAjax);
-    });
-    $('#app #BlogSearch1 form').forEach(function (a) {
-        a.removeEventListener('submit', GoUsingAjax);
-        a.addEventListener('submit', GoUsingAjax);
-    });
+    $('#app a[href]').on('click',GoUsingAjax);
+    $('#app #BlogSearch1 form').on('submit', GoUsingAjax);
 }
 
 function showComments() {
-    $('#comments a[href]').forEach(function (a) {
-        a.removeEventListener('click', GoUsingAjax);
-    });
+    $('#comments a[href]').off('click', GoUsingAjax);
     // if($('#disqus_thread')){
     //     var disqus_config = function () {
     //     this.page.url = location.href;
