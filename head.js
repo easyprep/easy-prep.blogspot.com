@@ -127,8 +127,8 @@ function loadFromServer(a) {
 }
 
 function parseContent(doc) {
-    let content = $(doc).find('#app').innerHTML;
-    let title = $(doc).find('title').text;
+    let content = $(doc).find('#app').html();
+    let title = $(doc).find('title').text();
     return { title, content };
 }
 
