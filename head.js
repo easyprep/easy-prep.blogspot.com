@@ -103,12 +103,12 @@ function GoUsingAjax(event) {
 }
 
 function loadFromServer(a) {
-    $('#loading').style.display = '';
+    $('#loading').show();
 
     fetch(a.href)
         .then((res) => res.text())
         .then((html) => {
-            $('#loading').style.display = 'none';
+            $('#loading').hide();
 
             let doc = document.createElement('html');
             doc.innerHTML = html;
@@ -121,7 +121,7 @@ function loadFromServer(a) {
             console.log('From Server : ', a.href);
         })
         .catch((e) => {
-            $('#loading').style.display = 'none';
+            $('#loading').hide();
             console.log(e);
         });
 }
