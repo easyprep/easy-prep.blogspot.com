@@ -87,12 +87,12 @@ function GoUsingAjax(event) {
     let cache = getCache(a);
 
     if (cache) {
-        $('#main').style.opacity = 0;
+        $('#main').css({opacity :0});
         setTimeout(function () {
             showContent(cache);
             window.history.pushState(cache, cache.title, a.href);
             console.log('From Cache : ', a.href);
-            $('#main').style.opacity = 1;
+            $('#main').css({opacity :1});
         }, 300);
         // if(Date.now()-cache.ts > 60*1000){
         //     prependChild('<p class="cache-ts">Page is ' + getCacheAge(cache.ts).filter(item=>item.value).map(item=>`<b>${item.value}</b> ${item.key}`).join(' ') + ' old. Refresh to get latest.</p>', $('#main'));
@@ -127,15 +127,15 @@ function loadFromServer(a) {
 }
 
 function parseContent(doc) {
-    let content = $('#app', doc).innerHTML;
-    let title = $('title', doc)[0].text;
+    let content = $(doc).find('#app').innerHTML;
+    let title = $(doc).find('title').text;
     return { title, content };
 }
 
 function showContent(cache) {
     document.title = cache.title;
-    $('#app').innerHTML = cache.content;
-    $('.timestamp-link').forEach(a => a.removeAttribute('href'));
+    $('#app').html(cache.content);
+    $('.timestamp-link').removeAttr('href');
     attachEventListener();
     showComments();
     scrollTo(0, 0);
