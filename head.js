@@ -24,11 +24,11 @@ const qs = {
 };
 
 // Dom Selector
-const $ = function (selector, doc = document) {
-  return selector.split(/[ >]/).pop().indexOf('#') == 0
-    ? doc.querySelector(selector)
-    : doc.querySelectorAll(selector);
-};
+// const $ = function (selector, doc = document) {
+//   return selector.split(/[ >]/).pop().indexOf('#') == 0
+//     ? doc.querySelector(selector)
+//     : doc.querySelectorAll(selector);
+// };
 
 const appendChild = (html, parent) => {
   let child = document.createElement('div');
